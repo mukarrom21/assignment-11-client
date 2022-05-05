@@ -1,23 +1,35 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { LockClosedIcon } from "@heroicons/react/solid";
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+  FacebookLoginButton,
+  GithubLoginButton,
+  GoogleLoginButton,
+} from "react-social-login-buttons";
+import { async } from "@firebase/util";
+import { toast } from "react-toastify";
+
+const handleLoginsubmit = async (event) => {
+  event.preventDefault();
+  const email = event.target.email.value;
+  const password = event.target.password.value;
+  //   Firebase hooks email and password login
+  await signInWithEmailAndPassword(email, password);
+};
+
+const handleResetPass = async (event) => {
+    toast('reset')
+  const email = event.target.email.value;
+  if (email) {
+    await sendPasswordResetEmail(email);
+    toast('Sent Email')
+  }
+};
 
 const Signin = () => {
   return (
@@ -51,7 +63,11 @@ const Signin = () => {
               </a>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            className="mt-8 space-y-6"
+            method="POST"
+            onSubmit={handleLoginsubmit}
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -101,21 +117,21 @@ const Signin = () => {
               </div>
 
               <div className="text-sm">
-                <a
-                  href="#"
+                <button
+                  onClick={handleResetPass}
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password?
-                </a>
+                </button>
               </div>
             </div>
             <div className="">
-              Don't have any account? 
+              Don't have any account?
               <Link
                 to="/signup"
                 className="font-medium text-red-600 hover:text-red-500"
               >
-                 Please Sign Up!
+                Please Sign Up!
               </Link>
             </div>
             <div>
@@ -133,6 +149,14 @@ const Signin = () => {
               </button>
             </div>
           </form>
+          <div>
+            <div className="text-2xl text-center font-bold text-indigo-800 my-3">
+              ----or Log In with----
+            </div>
+            <GoogleLoginButton></GoogleLoginButton>
+            <GithubLoginButton></GithubLoginButton>
+            <FacebookLoginButton></FacebookLoginButton>
+          </div>
         </div>
       </div>
     </div>

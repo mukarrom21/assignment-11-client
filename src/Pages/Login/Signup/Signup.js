@@ -1,35 +1,52 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
 import { LockClosedIcon } from "@heroicons/react/solid";
-
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import React from "react";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { FacebookLoginButton, GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+
 
 const Signup = () => {
+  // ------------------------------------------
+  const handleSignUp = () => {
+    signInWithEmailAndPassword(auth, "test@test.com", "password");
+  };
+  const logout = () => {
+    signOut(auth);
+  };
+
+  const CurrentUser = () => {
+    const [user, loading, error] = useAuthState(auth);
+
+    if (loading) {
+      return (
+        <div>
+          <p>Initialising User...</p>
+        </div>
+      );
+    }
+    if (error) {
+      return (
+        <div>
+          <p>Error: {error}</p>
+        </div>
+      );
+    }
+    if (user) {
+      return (
+        <div>
+          <p>Current User: {user.email}</p>
+          <button onClick={logout}>Log out</button>
+        </div>
+      );
+    }
+  };
+
+  // -------------------------------------------
+
   return (
     <div>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -41,17 +58,12 @@ const Signup = () => {
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
               Sign Up
             </h2>
-            {/*             <p className="mt-2 text-center text-sm text-gray-600">
-              Or{" "}
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                start your 14-day free trial
-              </a>
-            </p> */}
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form
+            className="mt-8 space-y-6"
+            method="POST"
+            onSubmit={handleSignUp}
+          >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -124,7 +136,6 @@ const Signup = () => {
               </div>
             </div>
 
-
             <div>
               <button
                 type="submit"
@@ -140,6 +151,14 @@ const Signup = () => {
               </button>
             </div>
           </form>
+          <div>
+            <div className="text-2xl text-center font-bold text-indigo-800 my-3">
+              ----or Log In with----
+            </div>
+            <GoogleLoginButton></GoogleLoginButton>
+            <GithubLoginButton></GithubLoginButton>
+            <FacebookLoginButton></FacebookLoginButton>
+          </div>
         </div>
       </div>
     </div>

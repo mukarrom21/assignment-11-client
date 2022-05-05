@@ -1,11 +1,33 @@
-/* This example requires Tailwind CSS v2.0+ */
-
-import React from "react";
-import { Link } from "react-router-dom";
-/* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { toast } from "react-toastify";
+
+
+    const handleGetStart = () => {
+      toast("Default Notification !");
+
+      toast.success("Success Notification !", {
+        position: toast.POSITION.TOP_CENTER
+      });
+
+      toast.error("Error Notification !", {
+        position: toast.POSITION.TOP_LEFT
+      });
+
+      toast.warn("Warning Notification !", {
+        position: toast.POSITION.BOTTOM_LEFT
+      });
+
+      toast.info("Info Notification !", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+
+      toast("Custom Style Notification with css class!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'foo-bar'
+      });
+    };
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -13,6 +35,7 @@ const navigation = [
   { name: "Marketplace", href: "#" },
   { name: "Company", href: "#" },
 ];
+
 
 //   ------------------------------------------------------------------------------
 
@@ -102,12 +125,12 @@ const Banner = () => {
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
-                  <a
-                    href="#"
+                  <button
+                    onClick={handleGetStart}
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                   >
                     Get started
-                  </a>
+                  </button>
                 </div>
                 <div className="mt-3 sm:mt-0 sm:ml-3">
                   <a

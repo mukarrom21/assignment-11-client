@@ -1,21 +1,41 @@
 import { LockClosedIcon } from "@heroicons/react/solid";
 import React from "react";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
 import {
-  FacebookLoginButton,
-  GithubLoginButton,
-  GoogleLoginButton,
-} from "react-social-login-buttons";
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 // ------  -----   ----------
 const Signin = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
+
+  let errorElement;
+
+  // Loading
+  if (loading) {
+    return <Loading></Loading>;
+  }
+  //error
+  if (error) {
+    errorElement = <p className="text-danger">Error: {error?.message}</p>;
+  }
+  //user
+  if (user) {
+    navigate(from, { replace: true });
+  }
 
   // submit to login
   const handleLoginsubmit = async (event) => {
@@ -24,28 +44,11 @@ const Signin = () => {
     const password = event.target.password.value;
     //   Firebase hooks email and password login
     await signInWithEmailAndPassword(email, password);
-    toast("sign in");
   };
 
-  // const handleResetPass = async (event) => {
-  //   toast("reset");
-  //   const email = event.target.email.value;
-  //   if (email) {
-  //     await sendPasswordResetEmail(email);
-  //     toast("Sent Email");
-  //   }
-  // };
   // ------------------------- return -----------------------------------
   return (
     <div>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -94,12 +97,12 @@ const Signin = () => {
 
             <div className="flex items-center justify-between">
               <div className="text-sm">
-                <button
-                  // onClick={handleResetPass}
+                <Link
+                  to='/resetpass'
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password?
-                </button>
+                </Link>
               </div>
               <div className="text-sm">
                 <Link
@@ -126,13 +129,12 @@ const Signin = () => {
               </button>
             </div>
           </form>
+          {errorElement}
           <div>
             <div className="text-2xl text-center font-bold text-indigo-800 my-3">
               ----or Log In with----
             </div>
-            <GoogleLoginButton onClick={signInWithGoogle}></GoogleLoginButton>
-            <GithubLoginButton></GithubLoginButton>
-            <FacebookLoginButton></FacebookLoginButton>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

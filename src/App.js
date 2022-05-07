@@ -7,7 +7,8 @@ import Signup from './Pages/Login/Signup/Signup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Pages/Shared/Footer/Footer';
-import Loading from './Pages/Shared/Loading/Loading';
+import NotFound from './Pages/Shared/NotFound/NotFound';
+import ResetPassword from './Pages/Login/ResetPassword/ResetPassword';
 
 
 function App() {
@@ -21,7 +22,8 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/signin' element={<Signin></Signin>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
-        <Route path='*' element={<Signup></Signup>}></Route>
+        <Route path='/resetpass' element={<ResetPassword></ResetPassword>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
 
       </Routes>
       <ToastContainer></ToastContainer>

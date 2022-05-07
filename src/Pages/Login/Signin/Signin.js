@@ -1,37 +1,41 @@
 import { LockClosedIcon } from "@heroicons/react/solid";
-import {
-  sendPasswordResetEmail,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-
 import React from "react";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import {
   FacebookLoginButton,
   GithubLoginButton,
   GoogleLoginButton,
 } from "react-social-login-buttons";
-import { async } from "@firebase/util";
 import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 
-const handleLoginsubmit = async (event) => {
-  event.preventDefault();
-  const email = event.target.email.value;
-  const password = event.target.password.value;
-  //   Firebase hooks email and password login
-  await signInWithEmailAndPassword(email, password);
-};
-
-const handleResetPass = async (event) => {
-    toast('reset')
-  const email = event.target.email.value;
-  if (email) {
-    await sendPasswordResetEmail(email);
-    toast('Sent Email')
-  }
-};
-
+// ------  -----   ----------
 const Signin = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle] = useSignInWithGoogle(auth);
+
+
+  // submit to login
+  const handleLoginsubmit = async (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    //   Firebase hooks email and password login
+    await signInWithEmailAndPassword(email, password);
+    toast("sign in");
+  };
+
+  // const handleResetPass = async (event) => {
+  //   toast("reset");
+  //   const email = event.target.email.value;
+  //   if (email) {
+  //     await sendPasswordResetEmail(email);
+  //     toast("Sent Email");
+  //   }
+  // };
+  // ------------------------- return -----------------------------------
   return (
     <div>
       {/*
@@ -53,22 +57,10 @@ const Signin = () => {
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
               Sign in to your account
             </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Or{" "}
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                start your 14-day free trial
-              </a>
-            </p>
           </div>
-          <form
-            className="mt-8 space-y-6"
-            method="POST"
-            onSubmit={handleLoginsubmit}
-          >
-            <input type="hidden" name="remember" defaultValue="true" />
+          {/* ---------------- form ------------------------ */}
+          <form className="mt-8 space-y-6" onSubmit={handleLoginsubmit}>
+            {/* <input type="hidden" name="remember" defaultValue="true" /> */}
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -101,39 +93,24 @@ const Signin = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-
               <div className="text-sm">
                 <button
-                  onClick={handleResetPass}
+                  // onClick={handleResetPass}
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password?
                 </button>
               </div>
+              <div className="text-sm">
+                <Link
+                  to="/signup"
+                  className="font-bold text-red-600 hover:text-red-500"
+                >
+                  Don't have account? Register!
+                </Link>
+              </div>
             </div>
-            <div className="">
-              Don't have any account?
-              <Link
-                to="/signup"
-                className="font-medium text-red-600 hover:text-red-500"
-              >
-                Please Sign Up!
-              </Link>
-            </div>
+
             <div>
               <button
                 type="submit"
@@ -153,7 +130,7 @@ const Signin = () => {
             <div className="text-2xl text-center font-bold text-indigo-800 my-3">
               ----or Log In with----
             </div>
-            <GoogleLoginButton></GoogleLoginButton>
+            <GoogleLoginButton onClick={signInWithGoogle}></GoogleLoginButton>
             <GithubLoginButton></GithubLoginButton>
             <FacebookLoginButton></FacebookLoginButton>
           </div>

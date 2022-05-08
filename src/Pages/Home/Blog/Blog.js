@@ -10,7 +10,7 @@ const Blog = () => {
             Difference between javascript and nodejs:
           </Accordion.Title>
           <Accordion.Content>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="mb-3">
               JavaScript is a simple programming language that runs in any
               browser JavaScript Engine. Whereas Node JS is an interpreter or
               running environment for a JavaScript programming language that
@@ -47,7 +47,7 @@ const Blog = () => {
             Differences between sql and nosql databases:
           </Accordion.Title>
           <Accordion.Content>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="my-3">
               <p> The five critical differences between SQL vs NoSQL are:</p>
               <p>
                 SQL databases are relational, NoSQL databases are
@@ -78,14 +78,14 @@ const Blog = () => {
             What is the purpose of jwt and how does it work?
           </Accordion.Title>
           <Accordion.Content>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="my-3">
               JWT, or JSON Web Token, is an open standard used to share security
               information between two parties — a client and a server. Each JWT
               contains encoded JSON objects, including a set of claims. JWTs are
               signed using a cryptographic algorithm to ensure that the claims
               cannot be altered after the token is issued.
             </p>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
+            <p className="my-3">
               In the case of authentication, a non-JWT based token is a string
               of characters that allow the receiver to validate the sender’s
               identity.

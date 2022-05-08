@@ -11,6 +11,8 @@ import Footer from "./Pages/Shared/Footer/Footer";
 import NotFound from "./Pages/Shared/NotFound/NotFound";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import Blog from "./Pages/Home/Blog/Blog";
+import ProductDetail from "./Pages/Items/ProductDetail";
+import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -27,6 +29,14 @@ function App() {
         <Route
           path="/resetpass"
           element={<ResetPassword></ResetPassword>}
+        ></Route>
+        <Route
+          path="product/:productId"
+          element={
+            <RequireAuth>
+              <ProductDetail></ProductDetail>
+            </RequireAuth>
+          }
         ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>

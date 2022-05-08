@@ -14,16 +14,17 @@ const CustomerReview = () => {
                   src="https://dummyimage.com/302x302"
                 />
                 <p className="leading-relaxed">
-                  Edison bulb retro cloud bread echo park, helvetica stumptown
-                  taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee
-                  ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut
-                  adaptogen squid fanny pack vaporware.
+                  Adidas foot wear I have been using them now itself and they
+                  are amazing.I feel very comfortable by wearing those.I have a
+                  great experience with my shoes.It is very nice product. And
+                  easy to use . Iam so happy and it is daily used . It is highly
+                  quality product. I suggest this to every one.
                 </p>
                 <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
                 <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">
                   HOLDEN CAULFIELD
                 </h2>
-                <p className="text-gray-500">Senior Product Designer</p>
+                <p className="text-gray-500">Canada</p>
               </div>
             </div>
             <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
@@ -34,16 +35,17 @@ const CustomerReview = () => {
                   src="https://dummyimage.com/300x300"
                 />
                 <p className="leading-relaxed">
-                  Edison bulb retro cloud bread echo park, helvetica stumptown
-                  taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee
-                  ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut
-                  adaptogen squid fanny pack vaporware.
+                  They never compromise on quality and they have always brought
+                  the most comfortable shoes. The shoes are best buy and they
+                  are highly comfortable. I love this brand. Must Buy.You can
+                  use the shoes anywhere while hiking, walking, etc the best
+                  sport shoes. I purchased many shoes but this is best of best.
                 </p>
                 <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
                 <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">
                   ALPER KAMU
                 </h2>
-                <p className="text-gray-500">UI Develeoper</p>
+                <p className="text-gray-500">USA</p>
               </div>
             </div>
             <div className="lg:w-1/3 lg:mb-0 p-4">
@@ -54,16 +56,17 @@ const CustomerReview = () => {
                   src="https://dummyimage.com/305x305"
                 />
                 <p className="leading-relaxed">
-                  Edison bulb retro cloud bread echo park, helvetica stumptown
-                  taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee
-                  ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut
-                  adaptogen squid fanny pack vaporware.
+                  Their products are both high-quality and long-lasting. They're
+                  trendy, comfortable, and affordable. They are much more
+                  comfortable than other shoes I have used. It's impossible to
+                  go wrong with Adidas! The brand is excellent for working out
+                  and going out of style.
                 </p>
                 <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
                 <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">
                   HENRY LETHAM
                 </h2>
-                <p className="text-gray-500">CTO</p>
+                <p className="text-gray-500">India</p>
               </div>
             </div>
           </div>

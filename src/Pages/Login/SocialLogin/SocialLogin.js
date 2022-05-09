@@ -30,7 +30,7 @@ const SocialLogin = () => {
     );
   }
 
-  if (user) {
+  if (user || user1) {
     navigate(from, { replace: true });
   }
 

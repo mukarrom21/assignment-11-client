@@ -18,6 +18,29 @@ const ProductDetail = () => {
     shipping,
     supplier,
   } = product;
+
+  const handleUpdateUser = (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+
+    const updatedUser = { name, email };
+    // send data to the server
+    const url = `http://localhost:5000/user/${_id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("success", data);
+        alert("users Updated successfully");
+        event.target.reset();
+      });
+  };
   return (
     <div>
       <section className="text-gray-600 body-font overflow-hidden">
@@ -90,7 +113,7 @@ const ProductDetail = () => {
               </div>
               {/* input field */}
               <div>
-                <form className="mt-8 flex">
+                <form className="mt-8 flex" onClick={()=>handleUpdateUser(_id)}>
                   <input
                     type="number"
                     className="rounded-l-lg py-2 px-4 border-t mr-0 border-b border-l text-gray-800 border-gray-400 bg-white"

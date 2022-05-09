@@ -71,6 +71,7 @@ const AddItem = () => {
                       name="name"
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Shoes Name"
+                      required
                     />
                   </div>
                   <div className="flex flex-col">
@@ -98,6 +99,7 @@ const AddItem = () => {
                       name="img"
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Shoes Category"
+                      required
                     />
                   </div>
 
@@ -110,6 +112,7 @@ const AddItem = () => {
                           name="stock"
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                           placeholder="quantity"
+                          defaultValue={1}
                         />
                         <div className="absolute left-3 top-2">
                           <svg
@@ -176,7 +179,8 @@ const AddItem = () => {
                   </div>
                 </div>
                 <div className="pt-4 flex items-center space-x-4">
-                  <button className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
+                    {/*------------ Cancel------- */}
+                  <button type="reset" className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
                     <svg
                       className="w-6 h-6 mr-3"
                       fill="none"
@@ -193,6 +197,7 @@ const AddItem = () => {
                     </svg>
                     Cancel
                   </button>
+                  {/*------------ Create product --------------*/}
                   <button
                     type="submit"
                     className="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none"

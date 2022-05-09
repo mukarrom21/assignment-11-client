@@ -10,7 +10,7 @@ const Products = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const p = [...products];
-    setItems(p.slice(2,8))
+    setItems(p.slice(3,9))
   }, [products])
   return (
     <div>

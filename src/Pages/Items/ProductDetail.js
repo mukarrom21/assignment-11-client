@@ -105,11 +105,13 @@ const ProductDetail = () => {
               </div>
               {/* end input field */}
             </div>
+            <div className="flex justify-center items-center lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded">
             <img
               alt="ecommerce"
-              className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+              className=""
               src={img}
             />
+            </div>
           </div>
           {/* button */}
           <button onClick={()=>navigate('/manageinv')} class="w-full mt-8 bg-indigo-500 text-white px-32 py-3 rounded-md text-1xl font-medium hover:bg-blue-700 transition duration-300">

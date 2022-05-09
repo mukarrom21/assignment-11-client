@@ -17,6 +17,7 @@ const Product = ({ item }) => {
     supplier,
   } = item;
 
+
   const navigate = useNavigate();
   const handldeUpdate = (id) => {
     navigate(`/product/${id}`);
@@ -35,8 +36,9 @@ const Product = ({ item }) => {
         {name}
       </h2>
       <p className="text-base leading-relaxed mt-2">
-        adidas 4D is a 3D-printed midsole with an unparalleled combination of
-        impact absorption and stability for city running.
+        {item?.description ||
+          `${name} is a 3D-printed midsole with an unparalleled combination of
+        impact absorption and stability for city running.`}
       </p>
 
       <button
@@ -47,9 +49,9 @@ const Product = ({ item }) => {
         <svg
           fill="none"
           stroke="white"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
           className="w-4 h-4 ml-2"
           viewBox="0 0 24 24"
         >

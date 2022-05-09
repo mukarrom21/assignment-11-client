@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import useProducts from "../hooks/useProducts";
 
 const ManageInventories = () => {
-  const navigate = useNavigate();
   const [products] = useProducts();
+  const [items, setItems] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    setItems([...products]);
+  }, [products]);
+
+  const handleUserDelete = (id) => {
+    const proceed = window.confirm("Are you sure you want to delete?");
+    if (proceed) {
+      console.log("deleting user with id", id);
+      const url = `https://thawing-earth-19842.herokuapp.com/product/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            console.log("deleted");
+            const remaining = items.filter((item) => item._id !== id);
+            setItems(remaining);
+          }
+        });
+    }
+  };
   return (
     <div>
       <div className="bg-white p-8 rounded-md w-full">
@@ -39,7 +62,10 @@ const ManageInventories = () => {
               {/* <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
                 New Report
               </button> */}
-              <button onClick={()=>navigate('/add')} className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+              <button
+                onClick={() => navigate("/add")}
+                className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer"
+              >
                 Add new item
               </button>
             </div>
@@ -70,7 +96,7 @@ const ManageInventories = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {products.map((product) => (
+                  {items.map((product) => (
                     <>
                       <tr>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -105,7 +131,10 @@ const ManageInventories = () => {
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <button className="relative inline-block px-3 py-1 font-semibold text-red-900 hover:text-white bg-red-200 hover:bg-red-900 rounded-full leading-tight">
+                          <button
+                            onClick={() => handleUserDelete(product._id)}
+                            className="relative inline-block px-3 py-1 font-semibold text-red-900 hover:text-white bg-red-200 hover:bg-red-900 rounded-full leading-tight"
+                          >
                             Delete
                           </button>
                         </td>

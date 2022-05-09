@@ -99,7 +99,7 @@ const Signin = () => {
               <div className="text-sm">
                 <Link
                   to='/resetpass'
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="font-medium text-indigo-600 hover:text-indigo-500 underline"
                 >
                   Forgot your password?
                 </Link>
@@ -107,9 +107,9 @@ const Signin = () => {
               <div className="text-sm">
                 <Link
                   to="/signup"
-                  className="font-bold text-red-600 hover:text-red-500"
+                  className="font-bold text-indigo-600 hover:text-indigo-500 underline"
                 >
-                  Don't have account? Register!
+                  Register
                 </Link>
               </div>
             </div>

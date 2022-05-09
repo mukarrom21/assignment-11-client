@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import useProducts from "../hooks/useProducts";
 import Product from "./Product";
 
 const Products = () => {
   const [products, setProducts] = useProducts([]);
+  const [items, setItems] = useState([]);
+
   const navigate = useNavigate();
+  useEffect(() => {
+    const p = [...products];
+    setItems(p.slice(2,8))
+  }, [products])
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -29,7 +35,7 @@ const Products = () => {
           </div>
           {/* ------------ card -------------------- */}
           <div className="flex flex-wrap sm:-m-2 -mx-2 -mb-10 -mt-4">
-            {products.map((item) => (
+            {items.map((item) => (
               <Product key={item.id} item={item}></Product>
             ))}
             {/* ------------------------- */}

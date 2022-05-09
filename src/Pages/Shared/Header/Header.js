@@ -1,5 +1,6 @@
 import { signOut } from "firebase/auth";
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
+import { NavbarToggle } from "flowbite-react/lib/esm/components/Navbar/NavbarToggle";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,7 +15,7 @@ const Header = () => {
       <Navbar fluid={true} rounded={true}>
         <Navbar.Brand>
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="https://i.ibb.co/BTTMTx8/shoe-icon.png"
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
@@ -32,7 +33,7 @@ const Header = () => {
             <Navbar.Toggle />
           </div>
         ) : (
-          <div className="flex md:order-2">
+          <div className="flex md:order-2 ">
             <Dropdown
               label={<Avatar img={user?.photoURL} rounded={true} />}
               arrowIcon={false}
@@ -49,6 +50,7 @@ const Header = () => {
                 Sign out
               </Dropdown.Item>
             </Dropdown>
+            <NavbarToggle />
           </div>
         )}
         <Navbar.Collapse>

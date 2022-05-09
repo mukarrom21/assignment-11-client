@@ -7,7 +7,7 @@ import auth from "../../../firebase.init";
 const Header = () => {
   const [user] = useAuthState(auth);
   return (
-    <div>
+    <div className="sticky top-0">
       <nav className="bg-gray-100 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <Link to="/" className="flex items-center">

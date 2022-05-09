@@ -1,9 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import useProducts from "../hooks/useProducts";
 
 const ManageInventories = () => {
+  const navigate = useNavigate();
   const [products] = useProducts();
-  console.log(products.length);
   return (
     <div>
       <div className="bg-white p-8 rounded-md w-full">
@@ -38,7 +39,7 @@ const ManageInventories = () => {
               {/* <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
                 New Report
               </button> */}
-              <button className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
+              <button onClick={()=>navigate('/add')} className="bg-indigo-600 px-4 py-2 rounded-md text-white font-semibold tracking-wide cursor-pointer">
                 Add new item
               </button>
             </div>
@@ -52,7 +53,7 @@ const ManageInventories = () => {
                 <thead>
                   <tr>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                     Product Photo and Name
+                      Product Photo and Name
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                       Category
@@ -99,7 +100,9 @@ const ManageInventories = () => {
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">{product.stock}</p>
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {product.stock}
+                          </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <button className="relative inline-block px-3 py-1 font-semibold text-red-900 hover:text-white bg-red-200 hover:bg-red-900 rounded-full leading-tight">

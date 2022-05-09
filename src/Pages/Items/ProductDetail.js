@@ -1,8 +1,9 @@
 import React from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useProductDetail from "../hooks/useProductDetail";
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const { productId } = useParams();
   const [product] = useProductDetail(productId);
   const {
@@ -111,7 +112,7 @@ const ProductDetail = () => {
             />
           </div>
           {/* button */}
-          <button class="w-full mt-8 bg-indigo-500 text-white px-32 py-3 rounded-md text-1xl font-medium hover:bg-blue-700 transition duration-300">
+          <button onClick={()=>navigate('/manageinv')} class="w-full mt-8 bg-indigo-500 text-white px-32 py-3 rounded-md text-1xl font-medium hover:bg-blue-700 transition duration-300">
             Manage Inventories
           </button>
         </div>

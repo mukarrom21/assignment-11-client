@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import useProductDetail from "../hooks/useProductDetail";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ProductDetail = () => {
+  const [restock, setRestock] = useState(0);
+  const [delivered, setDeliverd] = useState(0);
   const navigate = useNavigate();
   const { productId } = useParams();
   const [product] = useProductDetail(productId);
@@ -21,12 +25,11 @@ const ProductDetail = () => {
 
   const handleUpdateUser = (event) => {
     event.preventDefault();
-    const name = event.target.name.value;
-    const email = event.target.email.value;
+    const stock = event.target.stock.value;
 
-    const updatedUser = { name, email };
+    const updatedUser = { stock};
     // send data to the server
-    const url = `http://localhost:5000/user/${_id}`;
+    const url = `https://thawing-earth-19842.herokuapp.com/product/${productId}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -113,9 +116,13 @@ const ProductDetail = () => {
               </div>
               {/* input field */}
               <div>
-                <form className="mt-8 flex" onClick={()=>handleUpdateUser(_id)}>
+                <form
+                  className="mt-8 flex"
+                  onClick={() => handleUpdateUser(_id)}
+                >
                   <input
                     type="number"
+                    name="stock"
                     className="rounded-l-lg py-2 px-4 border-t mr-0 border-b border-l text-gray-800 border-gray-400 bg-white"
                     placeholder="Number if items"
                   />
@@ -127,15 +134,14 @@ const ProductDetail = () => {
               {/* end input field */}
             </div>
             <div className="flex justify-center items-center lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded">
-            <img
-              alt="ecommerce"
-              className=""
-              src={img}
-            />
+              <img alt="ecommerce" className="" src={img} />
             </div>
           </div>
           {/* button */}
-          <button onClick={()=>navigate('/manageinv')} class="w-full mt-8 bg-indigo-500 text-white px-32 py-3 rounded-md text-1xl font-medium hover:bg-blue-700 transition duration-300">
+          <button
+            onClick={() => navigate("/manageinv")}
+            class="w-full mt-8 bg-indigo-500 text-white px-32 py-3 rounded-md text-1xl font-medium hover:bg-blue-700 transition duration-300"
+          >
             Manage Inventories
           </button>
         </div>

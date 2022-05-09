@@ -13,6 +13,7 @@ import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import Blog from "./Pages/Home/Blog/Blog";
 import ProductDetail from "./Pages/Items/ProductDetail";
 import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
+import ManageInventories from "./Pages/Items/ManageInventories";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
           element={
             <RequireAuth>
               <ProductDetail></ProductDetail>
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/manageinv"
+          element={
+            <RequireAuth>
+              <ManageInventories></ManageInventories>
             </RequireAuth>
           }
         ></Route>

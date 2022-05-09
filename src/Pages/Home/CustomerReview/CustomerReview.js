@@ -4,6 +4,11 @@ const CustomerReview = () => {
   return (
     <div>
       <section className="text-gray-600 body-font">
+        <div className="flex justify-center">
+          <h1 className="sm:w-2/5 text-gray-900 font-medium title-font text-4xl mb-2 sm:mb-0 text-center">
+            Our customers satisfaction!
+          </h1>
+        </div>
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
@@ -11,7 +16,7 @@ const CustomerReview = () => {
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://dummyimage.com/302x302"
+                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
                 />
                 <p className="leading-relaxed">
                   Adidas foot wear I have been using them now itself and they
@@ -32,7 +37,7 @@ const CustomerReview = () => {
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://dummyimage.com/300x300"
+                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
                 />
                 <p className="leading-relaxed">
                   They never compromise on quality and they have always brought
@@ -53,7 +58,7 @@ const CustomerReview = () => {
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://dummyimage.com/305x305"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60"
                 />
                 <p className="leading-relaxed">
                   Their products are both high-quality and long-lasting. They're

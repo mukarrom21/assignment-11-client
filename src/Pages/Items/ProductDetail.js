@@ -89,6 +89,20 @@ const ProductDetail = () => {
                   </svg>
                 </button>
               </div>
+              {/* input field */}
+              <div>
+                <form className="mt-8 flex">
+                  <input
+                    type="number"
+                    className="rounded-l-lg py-2 px-4 border-t mr-0 border-b border-l text-gray-800 border-gray-400 bg-white"
+                    placeholder="Number if items"
+                  />
+                  <button className="px-8 rounded-r-lg bg-indigo-500  text-gray-800 font-bold  uppercase border-indigo-500 border-t border-b border-r">
+                    Restock the items
+                  </button>
+                </form>
+              </div>
+              {/* end input field */}
             </div>
             <img
               alt="ecommerce"
@@ -96,6 +110,10 @@ const ProductDetail = () => {
               src={img}
             />
           </div>
+          {/* button */}
+          <button class="w-full mt-8 bg-indigo-500 text-white px-32 py-3 rounded-md text-1xl font-medium hover:bg-blue-700 transition duration-300">
+            Manage Inventories
+          </button>
         </div>
       </section>
     </div>

@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import useProducts from "../hooks/useProducts";
 import Product from "./Product";
 
 const Products = () => {
   const [products, setProducts] = useProducts([]);
+  const navigate = useNavigate();
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -32,6 +34,12 @@ const Products = () => {
             ))}
             {/* ------------------------- */}
           </div>
+          <button
+            onClick={() => navigate("/manageinv")}
+            class="w-full mt-8 bg-indigo-500 text-white px-32 py-3 rounded-md text-1xl font-medium hover:bg-blue-700 transition duration-300"
+          >
+            Manage Inventories
+          </button>
         </div>
       </section>
     </div>

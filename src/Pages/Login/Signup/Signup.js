@@ -146,8 +146,8 @@ const Signup = () => {
           </form>
           {errorElement}
           <div>
-            <div className="text-2xl text-center font-bold text-indigo-800 my-3">
-              ----or Sign Up with----
+            <div className="divider">
+              or Sign Up with
             </div>
             <SocialLogin></SocialLogin>
           </div>

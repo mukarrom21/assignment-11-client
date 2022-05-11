@@ -28,6 +28,7 @@ const ManageInventories = () => {
         });
     }
   };
+
   return (
     <div>
       <div className="bg-white p-8 rounded-md w-full">
@@ -99,7 +100,8 @@ const ManageInventories = () => {
                   {items.map((product) => (
                     <>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        
+                        <td onClick={()=>navigate(`/product/${product._id}`)} className="cursor-pointer px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div className="flex items-center">
                             <div className="flex-shrink-0 w-10 h-10">
                               <img
@@ -115,12 +117,12 @@ const ManageInventories = () => {
                             </div>
                           </div>
                         </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <td onClick={()=>navigate(`/product/${product._id}`)} className="cursor-pointer px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {product.category}
                           </p>
                         </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <td className="cursor-pointer px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {product.supplier}
                           </p>

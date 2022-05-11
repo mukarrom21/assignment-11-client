@@ -128,9 +128,7 @@ const Signin = () => {
           </form>
           {errorElement}
           <div>
-            <div className="text-2xl text-center font-bold text-indigo-800 my-3">
-              ----or Log In with----
-            </div>
+            <div className="divider">Or</div>
             <SocialLogin></SocialLogin>
           </div>
         </div>

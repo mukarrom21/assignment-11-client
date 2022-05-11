@@ -57,10 +57,8 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <div class="avatar">
-            <div class="w-24 mask mask-squircle">
-              <img src="https://i.ibb.co/BTTMTx8/shoe-icon.png" />
-            </div>
+          <div class="w-[25px]">
+            <img src="https://i.ibb.co/BTTMTx8/shoe-icon.png" />
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
             Shoes House

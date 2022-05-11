@@ -5,7 +5,6 @@ import {
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
@@ -14,8 +13,6 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 const Signin = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -98,7 +95,7 @@ const Signin = () => {
             <div className="flex items-center justify-between">
               <div className="text-sm">
                 <Link
-                  to='/resetpass'
+                  to="/resetpass"
                   className="font-medium text-indigo-600 hover:text-indigo-500 underline"
                 >
                   Forgot your password?

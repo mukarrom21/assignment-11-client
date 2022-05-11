@@ -1,6 +1,4 @@
 import { signOut } from "firebase/auth";
-import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-import { NavbarToggle } from "flowbite-react/lib/esm/components/Navbar/NavbarToggle";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,74 +9,124 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="sticky top-0 z-50">
-      {/* ==================== */}
-      <Navbar fluid={true} rounded={true}>
-        <Navbar.Brand>
-          <img
-            src="https://i.ibb.co/BTTMTx8/shoe-icon.png"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite Logo"
-          />
-          <Link
-            to="/home"
-            className="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
-          >
+      <div className="navbar bg-base-100">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabindex="0" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabindex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              {user && (
+                <>
+                  <li>
+                    <Link to="/manageinv">Manage Items</Link>
+                  </li>
+                  <li>
+                    <Link to="/add">Add Itam</Link>
+                  </li>
+                  <li>
+                    <Link to="/myitem">My Items</Link>
+                  </li>
+                </>
+              )}
+
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+            </ul>
+          </div>
+          <div class="avatar">
+            <div class="w-24 mask mask-squircle">
+              <img src="https://i.ibb.co/BTTMTx8/shoe-icon.png" />
+            </div>
+          </div>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
             Shoes House
           </Link>
-        </Navbar.Brand>
-        {/* ---------------------------- */}
-        {!user ? (
-          <div className="flex md:order-2">
-            <Button onClick={() => navigate("/signin")}>Login</Button>
-            <Navbar.Toggle />
-          </div>
-        ) : (
-          <div className="flex md:order-2 ">
-            <Dropdown
-              label={<Avatar img={user?.photoURL} rounded={true} />}
-              arrowIcon={false}
-              inline={true}
-            >
-              <Dropdown.Header>
-                <span className="block text-sm">{user?.displayName}</span>
-                <span className="block truncate text-sm font-medium">
-                  {user?.email}
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Divider />
-              <Dropdown.Item onClick={() => signOut(auth)}>
-                Sign out
-              </Dropdown.Item>
-            </Dropdown>
-            <NavbarToggle />
-          </div>
-        )}
-        <Navbar.Collapse>
-          <Navbar.Link>
-            <Link to="/home">Home</Link>
-          </Navbar.Link>
-          <Navbar.Link>
-            <Link to="/blog">Blog</Link>
-          </Navbar.Link>
-          {user && (
-            <Navbar.Link>
-              <Link to="/manageinv">Manage Items</Link>
-            </Navbar.Link>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal p-0">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            {user && (
+              <>
+                <li>
+                  <Link to="/manageinv">Manage Items</Link>
+                </li>
+                <li>
+                  <Link to="/add">Add Itam</Link>
+                </li>
+                <li>
+                  <Link to="/myitem">My Items</Link>
+                </li>
+              </>
+            )}
+            {/*             
+            <li tabindex="0">
+              <a>
+                Parent
+                <svg
+                  className="fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                </svg>
+              </a>
+              <ul className="p-2">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
+            </li> */}
+            <li>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="navbar-end">
+          {user ? (
+            <button onClick={() => signOut(auth)} className="btn">
+              Log Out
+            </button>
+          ) : (
+            <button onClick={() => navigate("/signin")} className="btn">
+              Login
+            </button>
           )}
-          {user && (
-            <Navbar.Link>
-              <Link to="/add">Add Itam</Link>
-            </Navbar.Link>
-          )}
-          {user && (
-            <Navbar.Link>
-              <Link to="/myitem">My Items</Link>
-            </Navbar.Link>
-          )}
-        </Navbar.Collapse>
-      </Navbar>
-
-      {/* ===================== */}
+        </div>
+      </div>
     </div>
   );
 };

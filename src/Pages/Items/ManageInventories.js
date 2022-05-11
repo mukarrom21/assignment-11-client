@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import useProducts from "../hooks/useProducts";
+import useProducts from "../../hooks/useProducts";
 
 const ManageInventories = () => {
   const [products] = useProducts();

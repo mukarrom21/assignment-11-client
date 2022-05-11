@@ -1,5 +1,4 @@
 import "./App.css";
-import "flowbite";
 import Header from "./Pages/Shared/Header/Header";
 import { Route, Routes } from "react-router";
 import Home from "./Pages/Home/Home/Home";
@@ -12,9 +11,9 @@ import NotFound from "./Pages/Shared/NotFound/NotFound";
 import ResetPassword from "./Pages/Login/ResetPassword/ResetPassword";
 import Blog from "./Pages/Home/Blog/Blog";
 import ProductDetail from "./Pages/Items/ProductDetail";
-import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 import ManageInventories from "./Pages/Items/ManageInventories";
 import AddItem from "./Pages/Items/AddItem";
+import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 
 function App() {
   return (

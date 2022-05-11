@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import useProductDetail from "../hooks/useProductDetail";
+import useProductDetail from "../../hooks/useProductDetail";
 import axios from "axios";
 import { toast } from "react-toastify";
 

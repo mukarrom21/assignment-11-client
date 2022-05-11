@@ -9,12 +9,14 @@ This is my assignment of programming hero course. I have created a shoes warehou
 * This website used react js.
 * tailwind css used for styling.
 * react router used for link.
-* flowbite and flowbite react components used.
+* daisyUI tailwind components used.
 * firebase authentication used for Login and sign up.
 
 ## Some different features and functionalities
 * Created some protected route. not allowed without login.
 * good looking 404 page added.
+* awesome loading style animation added.
 * react toastify used for awesome toast.
 * Responsive website created.
 * firebase email password login, google login, github login, password reset etc. added.
+* MongoDB used for data saving and loading.

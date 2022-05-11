@@ -17,7 +17,7 @@ import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 
 function App() {
   return (
-    <div className="">
+    <div>
       <Header></Header>
       {/* routes */}
       <Routes>
